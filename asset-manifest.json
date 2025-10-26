@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/Well-Vantage-Lead-Management/static/css/main.62035034.css",
+    "main.js": "/Well-Vantage-Lead-Management/static/js/main.ca97f4a0.js",
+    "index.html": "/Well-Vantage-Lead-Management/index.html",
+    "main.62035034.css.map": "/Well-Vantage-Lead-Management/static/css/main.62035034.css.map",
+    "main.ca97f4a0.js.map": "/Well-Vantage-Lead-Management/static/js/main.ca97f4a0.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.62035034.css",
+    "static/js/main.ca97f4a0.js"
+  ]
+}
