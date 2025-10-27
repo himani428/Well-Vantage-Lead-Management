@@ -14,15 +14,15 @@ import {
   sendPasswordResetEmail,
 } from "firebase/auth";
 
-// ⬇️ PASTE YOUR REAL CONFIG from Firebase Console
+// ✅ Load from .env (CRA exposes only REACT_APP_ vars)
 const firebaseConfig = {
-  apiKey: "AIzaSyCp7tgeqKowhOTPcapCSGUxUyAY8Dmq6ZY",
-  authDomain: "wellvantage-d946f.firebaseapp.com",
-  projectId: "wellvantage-d946f",
-  storageBucket: "wellvantage-d946f.firebasestorage.app",
-  messagingSenderId: "697783173869",
-  appId: "1:697783173869:web:41b1cf9af24252b7a902e4",
-  measurementId: "G-FCZDS3F21C"
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_FIREBASE_APP_ID,
+  measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID,
 };
 
 const app = initializeApp(firebaseConfig);
@@ -48,13 +48,21 @@ export async function loginWithGooglePopupOrRedirect() {
     throw err;
   }
 }
+
 export async function resolveRedirectResultOnce() {
-  try { return await getRedirectResult(auth); }
-  catch { return null; }
+  try {
+    return await getRedirectResult(auth);
+  } catch {
+    return null;
+  }
 }
 
-export function listenAuth(cb) { return onAuthStateChanged(auth, cb); }
-export function logoutFirebase() { return signOut(auth); }
+export function listenAuth(cb) {
+  return onAuthStateChanged(auth, cb);
+}
+export function logoutFirebase() {
+  return signOut(auth);
+}
 
 // Email / password
 export async function signupEmailPassword({ email, password, displayName }) {
@@ -62,10 +70,12 @@ export async function signupEmailPassword({ email, password, displayName }) {
   if (displayName) await updateProfile(cred.user, { displayName });
   return cred.user;
 }
+
 export async function loginEmailPassword({ email, password }) {
   const cred = await signInWithEmailAndPassword(auth, email, password);
   return cred.user;
 }
+
 export function resetPassword(email) {
   return sendPasswordResetEmail(auth, email);
 }
