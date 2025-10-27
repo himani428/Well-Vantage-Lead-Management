@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/Well-Vantage-Lead-Management/static/css/main.62035034.css",
-    "main.js": "/Well-Vantage-Lead-Management/static/js/main.9e0e7489.js",
+    "main.css": "/Well-Vantage-Lead-Management/static/css/main.eac05d74.css",
+    "main.js": "/Well-Vantage-Lead-Management/static/js/main.3d5e9f58.js",
     "index.html": "/Well-Vantage-Lead-Management/index.html",
-    "main.62035034.css.map": "/Well-Vantage-Lead-Management/static/css/main.62035034.css.map",
-    "main.9e0e7489.js.map": "/Well-Vantage-Lead-Management/static/js/main.9e0e7489.js.map"
+    "main.eac05d74.css.map": "/Well-Vantage-Lead-Management/static/css/main.eac05d74.css.map",
+    "main.3d5e9f58.js.map": "/Well-Vantage-Lead-Management/static/js/main.3d5e9f58.js.map"
   },
   "entrypoints": [
-    "static/css/main.62035034.css",
-    "static/js/main.9e0e7489.js"
+    "static/css/main.eac05d74.css",
+    "static/js/main.3d5e9f58.js"
   ]
 }
