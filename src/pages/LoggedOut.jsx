@@ -1,8 +1,15 @@
 // src/pages/LoggedOut.jsx
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useAuth } from "../auth/AuthContext";
 
 export default function LoggedOut() {
+  const { logout } = useAuth();
+
+  useEffect(() => {
+    logout().catch(console.error);
+  }, [logout]);
+
   return (
     <div className="empty-wrapper">
       <div className="empty-box">
@@ -12,23 +19,13 @@ export default function LoggedOut() {
           </svg>
         </div>
         <h2 className="empty-title">You’ve been logged out</h2>
-        <p className="empty-desc">
-          This is a frontend-only demo. Your session has ended.
-        </p>
-
-        {/* Primary action back to Leads */}
+        <p className="empty-desc">Thanks for visiting. Sign back in anytime.</p>
         <Link
-          to="/leads"
+          to="/login"
           className="primary"
-          style={{
-            display: "inline-block",
-            padding: "12px 22px",
-            borderRadius: 12,
-            textDecoration: "none",
-            marginTop: 12,
-          }}
+          style={{ display: "inline-block", padding: "12px 22px", borderRadius: 12, textDecoration: "none", marginTop: 12 }}
         >
-          Return to Lead Management
+          Sign in again
         </Link>
       </div>
     </div>

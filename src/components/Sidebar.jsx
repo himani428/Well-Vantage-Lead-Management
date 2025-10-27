@@ -1,5 +1,6 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import { useAuth } from "../auth/AuthContext";
 
 // 🖤 Black SVG icons using currentColor
 const I = {
@@ -51,6 +52,18 @@ const I = {
 };
 
 export default function Sidebar() {
+  const navigate = useNavigate();
+  const { logout } = useAuth();
+
+  const handleLogout = async (e) => {
+    e.preventDefault();
+    try {
+      await logout();
+    } finally {
+      navigate("/logout");
+    }
+  };
+
   const Item = ({ to, icon, children }) => (
     <NavLink to={to} className={({ isActive }) => "nav-item" + (isActive ? " active" : "")}>
       <span className="ni">{icon}</span>
@@ -67,7 +80,6 @@ export default function Sidebar() {
 
       <div className="nav">
         <div className="nav-group-title">MANAGEMENT</div>
-
         <Item to="/leads" icon={I.lead}>Lead Management</Item>
         <Item to="/wv-leads" icon={I.check}>WellVantage Leads</Item>
         <Item to="/members" icon={I.member}>Member Management</Item>
@@ -84,13 +96,14 @@ export default function Sidebar() {
           <div className="avatar">DS</div>
           <div>David Smith</div>
         </div>
-        <NavLink
-          to="/logout"
+        <a
+          href="/logout"
+          onClick={handleLogout}
           className="logout"
           style={{ textDecoration: "none", display: "block", textAlign: "center" }}
         >
           ▢ Logout
-        </NavLink>
+        </a>
       </div>
     </aside>
   );
